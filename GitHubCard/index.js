@@ -2,15 +2,18 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-// axios.get("https://api.github.com/users/JWNicholson") 
-//     .then(response => {
-//       console.log(response)
-//     })
-//     .catch(error => {
-//       console.log("Error occured");
-//     });
+axios.get("-----https://api.github.com/users/JWNicholson") 
+    .then(response => {
+      //console.log(response.data.name)
+      response.data.map(item => {
+        entryPoint.appendChild(newCard(item));
+      })
+    })
+    .catch(error => {
+      console.log("Error occured");
+    });
 
-
+    const entryPoint = document.querySelector('.cards');
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -100,7 +103,11 @@ function createCard(user){
 
 }
 
-const entryPoint = document.querySelector('.cards');
+
+
+// data.map(i => {
+//   entryPoint.appendChild(createCard(i.avatar_url, i.name, i.login, i.login, i.html_url, i.followers, i.following))
+// });
 
 //console.log(entryPoint);
 
