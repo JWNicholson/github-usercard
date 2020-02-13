@@ -86,10 +86,25 @@ function createCard(user){
        newCardInfo.appendChild(userFollowingCount);
        newCardInfo.appendChild(userBio);
 
+       //set the content
+       newImage.src = data.avatar_url;
+       userName.textContent = name;
+       userUsername.textContent = login;
+       userLocation.textContent = location;
+       userProfileLink.textContent = html_url;
+       userFollowingCount.textContent= followers;
+       userFollowingCount.textContent = following;
+       userBio.textContent = bio;
+
         return newCard;
+
 }
 
 const entryPoint = document.querySelector('.cards');
+
+//console.log(entryPoint);
+
+
 
 
 /* List of LS Instructors Github username's: 
