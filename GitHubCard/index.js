@@ -55,18 +55,27 @@ const followersArray = [];
 
 */
 
-function createCard((info)){
-  const newCard = document.createElement('div'),
-        newImage = document.createElement('img'),
-        userName = document.createElement('h3'),
-        userUsername = document.createElement('p'),
-        userLocation = document.createElement('p'),
-        userProfile = document.createElement('p'),
-        userGitHubLink = document.createElement('a'),
-        userFollowersCount = document.createElement('p'),
-        userFollowingCount = document.createElement('p'),
-        userBio = document.createElement('p'),
-        
+function createCard(user){
+  //create elements
+  const newCard = document.createElement('div');
+        newImage = document.createElement('img');
+        newCardInfo = document.createElement('div');
+        userName = document.createElement('h3');
+        userUsername = document.createElement('p');
+        userLocation = document.createElement('p');
+        userProfile = document.createElement('p');
+        userGitHubLink = document.createElement('a');
+        userFollowersCount = document.createElement('p');
+        userFollowingCount = document.createElement('p');
+        userBio = document.createElement('p');
+
+        //assign classes
+        newCard.classList.add('card');
+        newCardInfo.classList.add('card-info');
+        userUsername.classList.add('username');
+
+
+
 }
 
 
