@@ -64,7 +64,7 @@ function createCard(user){
         userUsername = document.createElement('p');
         userLocation = document.createElement('p');
         userProfile = document.createElement('p');
-        userGitHubLink = document.createElement('a');
+        userProfileLink = document.createElement('a');
         userFollowersCount = document.createElement('p');
         userFollowingCount = document.createElement('p');
         userBio = document.createElement('p');
@@ -74,9 +74,22 @@ function createCard(user){
         newCardInfo.classList.add('card-info');
         userUsername.classList.add('username');
 
+       //append elements
+       newCard.appendChild(newImage);
+       newCard.appendChild(newCardInfo);
+       newCardInfo.appendChild(userName);
+       newCardInfo.appendChild(userUsername);
+       newCardInfo.appendChild(userLocation);
+       newCardInfo.appendChild(userProfile);
+       userProfile.appendChild(userProfileLink);
+       newCardInfo.appendChild(userFollowersCount);
+       newCardInfo.appendChild(userFollowingCount);
+       newCardInfo.appendChild(userBio);
 
-
+        return newCard;
 }
+
+const entryPoint = document.querySelector('.cards');
 
 
 /* List of LS Instructors Github username's: 
