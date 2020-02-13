@@ -2,18 +2,20 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-axios.get("-----https://api.github.com/users/JWNicholson") 
+const entryPoint = document.querySelector('.cards');
+/*axios */.get("https://api.github.com/users/JWNicholson") 
     .then(response => {
-      //console.log(response.data.name)
-      response.data.map(item => {
-        entryPoint.appendChild(newCard(item));
-      })
+      console.log(response)
+      console.log(response.data.login)
+      
+     const freshCard = createCard(response);
+      entryPoint.appendChild(freshCard)
     })
     .catch(error => {
       console.log("Error occured");
     });
 
-    const entryPoint = document.querySelector('.cards');
+    
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -58,7 +60,7 @@ const followersArray = [];
 
 */
 
-function createCard(user){
+function createCard(response){
   //create elements
   const newCard = document.createElement('div');
         newImage = document.createElement('img');
@@ -90,14 +92,14 @@ function createCard(user){
        newCardInfo.appendChild(userBio);
 
        //set the content
-       newImage.src = data.avatar_url;
-       userName.textContent = name;
-       userUsername.textContent = login;
-       userLocation.textContent = location;
-       userProfileLink.textContent = html_url;
-       userFollowingCount.textContent= followers;
-       userFollowingCount.textContent = following;
-       userBio.textContent = bio;
+       newImage.src = response.data.avatar_url;
+       userName.textContent = response.data.name;
+       userUsername.textContent = response.data.login;
+       userLocation.textContent = response.data.location;
+       userProfileLink.textContent = response.data.html_url;
+       userFollowingCount.textContent= response.data.followers;
+       userFollowingCount.textContent = response.data.following;
+       userBio.textContent = response.data.bio;
 
         return newCard;
 
@@ -105,9 +107,7 @@ function createCard(user){
 
 
 
-// data.map(i => {
-//   entryPoint.appendChild(createCard(i.avatar_url, i.name, i.login, i.login, i.html_url, i.followers, i.following))
-// });
+
 
 //console.log(entryPoint);
 
