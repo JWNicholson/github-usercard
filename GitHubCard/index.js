@@ -5,10 +5,10 @@
 const entryPoint = document.querySelector('.cards');
 axios.get("https://api.github.com/users/JWNicholson") 
     .then(response => {
-      console.log(response)
-      console.log(response.data.login)
+      //console.log(response)
+      //console.log(response.data.login)
       
-     const freshCard = createCard(response);
+     const freshCard = createCard(response.data);
       entryPoint.appendChild(freshCard)
     })
     .catch(error => {
@@ -49,21 +49,25 @@ axios.get("https://api.github.com/users/JWNicholson")
 
 
 const followersArray = [];
-const req = axios.get("https://api.github.com/users/JWNicholson/followers")
+ axios.get("https://api.github.com/users/JWNicholson/followers")
     .then(response => {
+
+      console.log('Then', response);
       response.data.forEach(item => {
         followersArray.push(item);
-/********************************* */
-const followerCard = createCard(response);
-          entryPoint.appendChild(followerCard);
-
       });
+console.log('Followers Array',followersArray);
+      followersArray.forEach(user => {
+        console.log(user);
+        const freshCard = createCard(user);
+        entryPoint.appendChild(freshCard);
+      })
     })
     .catch(error => {
             console.log("Error. follower data not returned.")
           })
 
-          console.log(followersArray)
+          //console.log(followersArray)
 
 
 
@@ -143,14 +147,14 @@ function createCard(response){
        newCardInfo.appendChild(userBio);
 
        //set the content
-       newImage.src = response.data.avatar_url;
-       userName.textContent = response.data.name;
-       userUsername.textContent = response.data.login;
-       userLocation.textContent = response.data.location;
-       userProfileLink.textContent = response.data.html_url;
-       userFollowingCount.textContent= response.data.followers;
-       userFollowingCount.textContent = response.data.following;
-       userBio.textContent = response.data.bio;
+       newImage.src = response.avatar_url;
+       userName.textContent = response.name;
+       userUsername.textContent = response.login;
+       userLocation.textContent = response.location;
+       userProfileLink.textContent = response.html_url;
+       userFollowingCount.textContent= response.followers;
+       userFollowingCount.textContent = response.following;
+       userBio.textContent = response.bio;
 
         return newCard;
 
