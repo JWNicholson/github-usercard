@@ -3,7 +3,7 @@
            https://api.github.com/users/<your name>
 */
 const entryPoint = document.querySelector('.cards');
-/*axios */.get("https://api.github.com/users/JWNicholson") 
+axios.get("https://api.github.com/users/JWNicholson") 
     .then(response => {
       console.log(response)
       console.log(response.data.login)
@@ -38,7 +38,58 @@ const entryPoint = document.querySelector('.cards');
           user, and adding that card to the DOM.
 */
 
+// const followersArray = [ 
+//   "CScori",
+//   "NataliaBeckstead",
+//   "Minaramzey",
+//   "rofstudios",
+//   "Karavil"
+// ];
+
+
+
 const followersArray = [];
+const req = axios.get("https://api.github.com/users/JWNicholson/followers")
+    .then(response => {
+      response.data.forEach(item => {
+        followersArray.push(item);
+/********************************* */
+const followerCard = createCard(response);
+          entryPoint.appendChild(followerCard);
+
+      });
+    })
+    .catch(error => {
+            console.log("Error. follower data not returned.")
+          })
+
+          console.log(followersArray)
+
+
+
+// followersArray.forEach(user => {
+//   axios.get("https://api.github.com/users/${followersArray[i]}")
+//     .then(response => {
+//       console.log(response);
+//       const followerInfo = response.data;
+//       const followerCard = document.querySelector('.cards');
+//       const cardData = createCard(followerInfo);
+//       followerCard.appendChild(cardData);
+//     })
+//     .catch(error => {
+//       console.log("Error. follower data not returned.")
+//     })
+// })
+
+// axios.get("https://api.github.com/users/follower")
+//   .then(response => {
+//     console.log(response);
+//   })
+//   .catch(error => {
+//     console.log("Error")
+//   })
+
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -104,14 +155,6 @@ function createCard(response){
         return newCard;
 
 }
-
-
-
-
-
-//console.log(entryPoint);
-
-
 
 
 /* List of LS Instructors Github username's: 
