@@ -148,12 +148,11 @@ function createCard(response){
        newImage.src = response.avatar_url;
        userName.textContent = response.name;
        userUsername.textContent = response.login;
-       userLocation.textContent = response.location;
-
-       userProfile.innerHTML = `<a href="${response.html_url}">${response.html_url}</a>`;
-       userFollowersCount.textContent= response.followers;
-       userFollowingCount.textContent = response.following;
-       userBio.textContent = response.bio;
+       userLocation.textContent = `Location: ${response.location}`;
+       userProfile.innerHTML = `Profile: <a href="${response.html_url}">${response.html_url}</a>`;
+       userFollowersCount.textContent= `Followers: ${response.followers}`;
+       userFollowingCount.textContent = `Following: ${response.following}`;
+       userBio.textContent = `Bio: ${response.bio}`;
 
         return newCard;
 
