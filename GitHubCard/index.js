@@ -124,7 +124,6 @@ function createCard(response){
         userUsername = document.createElement('p');
         userLocation = document.createElement('p');
         userProfile = document.createElement('p');
-        userProfileLink = document.createElement('a');
         userFollowersCount = document.createElement('p');
         userFollowingCount = document.createElement('p');
         userBio = document.createElement('p');
@@ -141,7 +140,6 @@ function createCard(response){
        newCardInfo.appendChild(userUsername);
        newCardInfo.appendChild(userLocation);
        newCardInfo.appendChild(userProfile);
-       userProfile.appendChild(userProfileLink);
        newCardInfo.appendChild(userFollowersCount);
        newCardInfo.appendChild(userFollowingCount);
        newCardInfo.appendChild(userBio);
@@ -151,7 +149,8 @@ function createCard(response){
        userName.textContent = response.name;
        userUsername.textContent = response.login;
        userLocation.textContent = response.location;
-       userProfileLink.textContent = response.html_url;
+
+       userProfile.innerHTML = `<a href="${response.html_url}">${response.html_url}</a>`;
        userFollowingCount.textContent= response.followers;
        userFollowingCount.textContent = response.following;
        userBio.textContent = response.bio;
