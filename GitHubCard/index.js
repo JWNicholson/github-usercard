@@ -151,7 +151,7 @@ function createCard(response){
        userLocation.textContent = response.location;
 
        userProfile.innerHTML = `<a href="${response.html_url}">${response.html_url}</a>`;
-       userFollowingCount.textContent= response.followers;
+       userFollowersCount.textContent= response.followers;
        userFollowingCount.textContent = response.following;
        userBio.textContent = response.bio;
 
